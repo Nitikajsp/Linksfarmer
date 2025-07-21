@@ -1,0 +1,28 @@
+[04-Jun-2024 15:15:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/localseolinkbuil/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/localseolinkbuil/public_html/config/database.php on line 18
+[25-Mar-2025 01:16:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/linksfarmer/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/linksfarmer/public_html/config/app.php on line 19
+[27-Mar-2025 22:06:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/linksfarmer/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/linksfarmer/public_html/config/app.php on line 19
+[31-Mar-2025 06:07:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/linksfarmer/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/linksfarmer/public_html/config/app.php on line 19
+[07-May-2025 09:26:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/linksfarmer/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/linksfarmer/public_html/config/app.php on line 19
+[08-May-2025 11:57:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/linksfarmer/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/linksfarmer/public_html/config/app.php on line 19
+[09-May-2025 22:38:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/linksfarmer/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/linksfarmer/public_html/config/app.php on line 19
