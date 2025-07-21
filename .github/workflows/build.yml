@@ -1,19 +1,35 @@
 name: Publish Website to CPanel
+
 on:
   push:
     branches:
       - main
+
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  ftp-deploy:
+    name: FTP Deploy to cPanel
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      with:
-        server: ${{ secrets.MAIN_FTP_SERVER }}
-        username: ${{ secrets.MAIN_FTP_USERNAME }}
-        password: ${{ secrets.MAIN_FTP_PASSWORD }}
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.MAIN_FTP_SERVER }}
+          username: ${{ secrets.MAIN_FTP_USERNAME }}
+          password: ${{ secrets.MAIN_FTP_PASSWORD }}
+          server-dir: /public_html/       # <- Adjust based on your actual target folder
+          local-dir: ./                   # <- Your Laravel root or `dist`, if it's a build
+          protocol: ftp                   # or sftp
+          port: 21                        # use 22 for SFTP
+          timeout: 60000                 # optional: increase if needed
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/**
+            **/vendor/**
+            **/storage/**
+            .env
