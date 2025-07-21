@@ -74,7 +74,7 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        /* 
+        /* $stripe = env('STRIPE_SECRET');
         header('Content-Type: application/json');
         try {
             // retrieve JSON from POST body
