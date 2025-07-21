@@ -74,7 +74,7 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        /* $stripe = Stripe\Stripe::setApiKey('sk_test_RqEkHC4txd8hDY5U4Xyumm0S');
+        /* 
         header('Content-Type: application/json');
         try {
             // retrieve JSON from POST body
