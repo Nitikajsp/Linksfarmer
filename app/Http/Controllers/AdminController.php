@@ -113,21 +113,90 @@ class AdminController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('lslbadmin.withdrawal', compact('withdrawals'));
+        // return view('lslbadmin.withdrawal', compact('withdrawals'));
+        return view('lslbadmin.withdrawal', ['withdrawals' => $withdrawals, 'slug' => 'withdrawal-list']);
     }
 
     /**
      * Update the specified resource in storage.
      */
 
+    // public function updateStatus(Request $request, string $id)
+    // {
+    //     if (!empty($request->post('status'))) {
+    //         $order = lslbWebsite::find($id);
+    //         $user = lslbUser::find($order->user_id);
+
+    //         if (!$order) {
+    //             abort(404);
+    //         }
+
+    //         $validatedData = $request->validate([
+    //             'status' => 'required',
+    //             'rejectionReason' => 'nullable|string',
+    //             'linkedinSession' => 'nullable|string',
+    //             'guestPostPrice' => 'nullable|string'
+    //         ]);
+
+    //         $order->update(['status' => $validatedData['status']]);
+
+    //         if (!empty($validatedData['linkedinSession'])) {
+    //             $order->linkedinSession_adminprice = $validatedData['linkedinSession'];
+    //         }
+
+    //         if (!empty($validatedData['guestPostPrice'])) {
+    //             $order->guestPostPrice_adminprice = $validatedData['guestPostPrice'];
+    //         }
+
+    //         if (!empty($validatedData['rejectionReason'])) {
+    //             $order->rejectionReason = $validatedData['rejectionReason'];
+    //         }
+
+    //         $order->save();
+
+    //         $data = ['success' => 'Status updated successfully', 'error' => ''];
+    //         $status = ucwords($validatedData['status']);
+
+    //         $customData['from_name'] = env('MAIL_FROM_NAME');
+    //         $customData['mailaddress'] = env('MAIL_FROM_ADDRESS');
+    //         $customData['subject'] = 'Notification: Links Farmer - Website Status Update';
+
+    //         $rejectionMessage = '';
+    //         if ($validatedData['status'] == 'rejected' && !empty($validatedData['rejectionReason'])) {
+    //             $rejectionMessage = "<li><strong>Reason for Rejection:</strong> " . $validatedData['rejectionReason'] . "</li>";
+    //         }
+
+    //         $customData['msg'] = "<p>Your website status has been updated:</p>
+    //             <ul>
+    //                 <li><strong>Website:</strong> " . $order->website_url . "</li>
+    //                 <li><strong>New Status:</strong> " . $status . "</li>
+    //                 $rejectionMessage
+
+    //             </ul>
+    //             <p>If you have any questions or concerns, please contact our customer support.</p>
+    //             <p>Thank you for choosing our platform!</p>";
+
+    //         Mail::to($user->email)->send(new MyMail($customData));
+    //     } else {
+    //         $data = ['error' => 'Oops! Status update failed', 'success' => ''];
+    //     }
+
+    //     echo json_encode($data, true);
+    //     exit;
+    // }
+
     public function updateStatus(Request $request, string $id)
     {
         if (!empty($request->post('status'))) {
             $order = lslbWebsite::find($id);
-            $user = lslbUser::find($order->user_id);
 
             if (!$order) {
-                abort(404);
+                abort(404, 'Order not found');
+            }
+
+            $user = lslbUser::find($order->user_id);
+            if (!$user) {
+                return response()->json(['error' => 'User not found for this order'], 404);
             }
 
             $validatedData = $request->validate([
@@ -153,7 +222,6 @@ class AdminController extends Controller
 
             $order->save();
 
-            $data = ['success' => 'Status updated successfully', 'error' => ''];
             $status = ucwords($validatedData['status']);
 
             $customData['from_name'] = env('MAIL_FROM_NAME');
@@ -161,28 +229,35 @@ class AdminController extends Controller
             $customData['subject'] = 'Notification: Links Farmer - Website Status Update';
 
             $rejectionMessage = '';
-            if ($validatedData['status'] == 'rejected' && !empty($validatedData['rejectionReason'])) {
+            if ($validatedData['status'] === 'rejected' && !empty($validatedData['rejectionReason'])) {
                 $rejectionMessage = "<li><strong>Reason for Rejection:</strong> " . $validatedData['rejectionReason'] . "</li>";
             }
 
-            $customData['msg'] = "<p>Your website status has been updated:</p>
-                <ul>
-                    <li><strong>Website:</strong> " . $order->website_url . "</li>
-                    <li><strong>New Status:</strong> " . $status . "</li>
-                    $rejectionMessage
+            $customData['msg'] = "
+            <p>Your website status has been updated:</p>
+            <ul>
+                <li><strong>Website:</strong> {$order->website_url}</li>
+                <li><strong>New Status:</strong> {$status}</li>
+                {$rejectionMessage}
+            </ul>
+            <p>If you have any questions or concerns, please contact our customer support.</p>
+            <p>Thank you for choosing our platform!</p>";
 
-                </ul>
-                <p>If you have any questions or concerns, please contact our customer support.</p>
-                <p>Thank you for choosing our platform!</p>";
+            // Safe email send
+            try {
+                Mail::to($user->email)->send(new MyMail($customData));
+            } catch (\Exception $e) {
+                Log::error('Mail Send Failed: ' . $e->getMessage());
+            }
 
-            Mail::to($user->email)->send(new MyMail($customData));
+            $data = ['success' => 'Status updated successfully', 'error' => ''];
         } else {
             $data = ['error' => 'Oops! Status update failed', 'success' => ''];
         }
 
-        echo json_encode($data, true);
-        exit;
+        return response()->json($data);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -435,6 +510,10 @@ class AdminController extends Controller
     public function getcontact()
     {
         $contacts = Contact::latest()->get();
-        return view('lslbadmin.contact', compact('contacts'));
+        // return view('lslbadmin.contact', compact('contacts'));
+        return view('lslbadmin.contact', [
+            'contacts' => $contacts,
+            'slug' => 'contact-list', // 👈 this is what makes sidebar tab active
+        ]);
     }
 }

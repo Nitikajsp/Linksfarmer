@@ -11,7 +11,7 @@
                         <div class="col-sm-6 col-lg-4 cursor-pointer">
                             <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0 linksCard" data-href="{{ route('lslbadmin.users') }}">
                                 <div>
-                                    <h4 class="mb-2">{{$orderCount}}</h4>
+                                    <h4 class="mb-2">{{$userCount}}</h4>
                                     <p class="mb-0 fw-medium">{{ __('Total Users') }}</p>
                                 </div>
                                 <span class="avatar p-2 me-sm-4">

@@ -252,6 +252,8 @@ $content = 'Links Farmer combines the best of a guest post marketplace and link 
 
                                     </div>
 
+                                    
+
                                 </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
@@ -439,6 +441,21 @@ $content = 'Links Farmer combines the best of a guest post marketplace and link 
                                 </div>
                             </a>
                         </div>
+
+                         {{-- <div class="col-lg-3 col-sm-6 col-6 ">
+                            <a href="{{ route('seo-reseller-services') }}">
+
+                                <div class="services-card">
+                                    <div class="img-wrap">
+                                        <img src="{{ asset_url('img/services/service5.png') }}" alt="service-img">
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <h6>Guest Posting</h6>
+                                        <i class="ti ti-arrow-narrow-right "></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -500,7 +517,18 @@ $content = 'Links Farmer combines the best of a guest post marketplace and link 
     <!-- Page JS -->
     <script src="{{ asset_url('assets/front-page-landing.js') }}"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const reviewSlides = document.querySelectorAll('#swiper-reviews .swiper-slide');
+    const navBtns = document.querySelector('.landing-reviews-btns');
 
+    if (reviewSlides.length < 4) {
+        navBtns.style.display = 'none';
+    } else {
+        navBtns.style.display = 'flex'; // Or 'block' if needed
+    }
+});
+</script>
 </body>
 
 </html>
