@@ -1,10 +1,22 @@
 @extends('lslbadmin.sidebar')
+
 @push('css')
+<style>
+    .truncate-text {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+
+</style>
+<!-- DataTables Bootstrap 5 CSS -->
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
 @endpush
+
 @section('sidebar-content')
-
-
-
 
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -16,29 +28,27 @@
             <div class="card mt-2">
                 @if (count($contacts) > 0)
                 <div class="m-3">
-
                     <div class="table-responsive text-nowrap">
-                        <table class="table" id="user-tbl">
+                        <table class="table" id="contact-tbl">
                             <thead class="table-dark">
                                 <tr>
                                     <th>No.</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Phone Number
+                                    <th>Phone Number</th>
                                     <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 @php $num = 1; @endphp
-                                @foreach($contacts as $k => $v)
+                                @foreach($contacts as $v)
                                 <tr>
-                                    <td>{{ $num }}</td>
-                                    <td>{{ $v->first_name }}</td>
+                                    <td>{{ $num++ }}</td>
+                                    <td class="truncate-text">{{ $v->first_name }}</td>
                                     <td>{{ $v->last_name }}</td>
                                     <td>{{ $v->phone_number }}</td>
                                     <td>{{ $v->email }}</td>
                                 </tr>
-                                @php $num++; @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -52,5 +62,19 @@
     </div>
 </div>
 
-
 @endsection
+
+@push('script')
+<!-- Include jQuery and DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#contact-tbl').DataTable({
+            responsive: true
+        });
+    });
+
+</script>
+@endpush

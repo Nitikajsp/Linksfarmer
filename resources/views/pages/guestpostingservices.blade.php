@@ -55,7 +55,7 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                         </div>
                     </div>
                     <div class="d-flex flex-wrap justify-content-center gap-2 align-items-center">
-                        <a href="#landingPricing" class="filled-btn">Place your Order Now!</a>
+                        <a href="{{ route('login') }}" class="filled-btn">Place your Order Now!</a>
                     </div>
                 </div>
             </div>

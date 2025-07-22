@@ -24,12 +24,8 @@
                                 <th scope="col">Website URL</th>
                                 <th scope="col">Publisher Name</th>
 
-                                <th scope="col"><span data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="tooltip-secondary"
-                                        data-bs-original-title="Domain Authority">DA</span></th>
-                                <th scope="col"><span data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="tooltip-secondary"
-                                        data-bs-original-title="Page Authority">PA</span></th>
+                                <th scope="col"><span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-secondary" data-bs-original-title="Domain Authority">DA</span></th>
+                                <th scope="col"><span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-secondary" data-bs-original-title="Page Authority">PA</span></th>
                                 <th scope="col">Ahrefs Traffic</th>
                                 <th scope="col">Semrush Traffic</th>
                                 <!--<th scope="col">Google Analytics</th>-->
@@ -49,30 +45,23 @@
                             $forbidden_categories = explode(',', $v->forbidden_categories);
                             @endphp
                             <tr class="table-body">
-                                <td>{{ $v->website_url }}</td>
-                                <td>{{ $v->user->name }}</td>
-                                <td>{{ $v->domain_authority }}</td>
-                                <td>{{ $v->page_authority }}</td>
-                                <td>{{ $v->ahrefs_traffic }}</td>
-                                <td>{{ $v->samrush_traffic }}</td>
-                                <!--<td>{{ $v->google_analytics }}</td>-->
-                                <td>${{ $v->guest_post_price }}</td>
-                                <td>${{ $v->link_insertion_price }} </td>
+                                <td>{{ $v->website_url ?? '-' }}</td>
+                                <td>{{ $v->user?->name ?? '-' }}</td>
+                                <td>{{ $v->domain_authority ?? '-'}}</td>
+                                <td>{{ $v->page_authority ?? '-' }}</td>
+                                <td>{{ $v->ahrefs_traffic ?? '-'}}</td>
+                                <td>{{ $v->samrush_traffic ?? '-'}}</td>
+                                <!--<td>{{ $v->google_analytics ?? '-'}}</td>-->
+                                <td>${{ $v->guest_post_price ?? '-'}}</td>
+                                <td>${{ $v->link_insertion_price ?? '-'}} </td>
                                 <td>
-                                    <button type="button"
-                                        class="btn btn-label-primary dropdown-toggle waves-effect statusBtnTitle{{ $v->id }}"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-label-primary dropdown-toggle waves-effect statusBtnTitle{{ $v->id }}" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ ucwords($v->status) }}
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li class="dropdown-item webStatus{{ $v->id }} {{ $v->status == 'pending' ? 'active' : '' }}" onclick="webStatus($(this), <?= $v->id ?>)" data-item="pending">Pending</li>
                                         <li class="dropdown-item webStatus{{ $v->id }} {{ $v->status == 'in-review' ? 'active' : '' }}" onclick="webStatus($(this), <?= $v->id ?>)" data-item="in-review">In Review</li>
-                                        <li
-                                            class="dropdown-item webStatus{{ $v->id }} {{ $v->status == 'approve' ? 'active' : '' }}"
-                                            onclick="webStatus($(this), {{ $v->id }})"
-                                            data-item="approve"
-                                            data-link-insertion-price="{{ $v->link_insertion_price }}"
-                                            data-guest-post-price="{{ $v->guest_post_price }}">
+                                        <li class="dropdown-item webStatus{{ $v->id }} {{ $v->status == 'approve' ? 'active' : '' }}" onclick="webStatus($(this), {{ $v->id }})" data-item="approve" data-link-insertion-price="{{ $v->link_insertion_price }}" data-guest-post-price="{{ $v->guest_post_price }}">
                                             Approve
                                         </li>
 
@@ -81,8 +70,7 @@
                                 </td>
                                 <td class="p-0 text-center">
                                     @if($v->site_verification_file != '')
-                                    <a href="{{ url('/storage/app/'.$v->site_verification_file) }}" target="_blank"><i
-                                            class="tf-icons ti ti-clock-cog"></i></a>
+                                    <a href="{{ url('/storage/app/'.$v->site_verification_file) }}" target="_blank"><i class="tf-icons ti ti-clock-cog"></i></a>
                                     @else
                                     <i class="tf-icons ti ti-clock-x text-danger"></i>
                                     @endif
@@ -94,18 +82,10 @@
                                 </td>
 
                                 <td>
-                                    <button type="button" class="btn p-0 edit-btn text-info"
-                                        onclick="window.location.href=`{{ url('/lslb-admin/website') }}/{{ $v->id }}/edit`"><i
-                                            class="ti ti-pencil me-1"></i></button>
-                                    <button type="button" class="btn p-0 delete-btn text-danger" data-bs-toggle="modal"
-                                        data-bs-target="#delete-pop"
-                                        onclick="$('.delete-yes-btn').attr('data-href',`{{ url('/lslb-admin/website') }}/{{ $v->id }}/delete`);"><i
-                                            class="ti ti-trash me-1"></i></button>
+                                    <button type="button" class="btn p-0 edit-btn text-info" onclick="window.location.href=`{{ url('/lslb-admin/website') }}/{{ $v->id }}/edit`"><i class="ti ti-pencil me-1"></i></button>
+                                    <button type="button" class="btn p-0 delete-btn text-danger" data-bs-toggle="modal" data-bs-target="#delete-pop" onclick="$('.delete-yes-btn').attr('data-href',`{{ url('/lslb-admin/website') }}/{{ $v->id }}/delete`);"><i class="ti ti-trash me-1"></i></button>
                                 </td>
-                                <td> <button type="button" class="btn p-0 edit-btn text-dark"
-                                        onclick="getSiteDetail($(this))"
-                                        data-i="<?= htmlspecialchars(json_encode($v)) ?>"><i
-                                            class="ti ti-file-dots fs-3"></i></button> </td>
+                                <td> <button type="button" class="btn p-0 edit-btn text-dark" onclick="getSiteDetail($(this))" data-i="<?= htmlspecialchars(json_encode($v)) ?>"><i class="ti ti-file-dots fs-3"></i></button> </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -128,11 +108,8 @@
                 </div>
                 <p class="text-wrap">{{ __("Are you sure you wan't to delete this record!") }}</p>
                 <div class="col-12 text-center">
-                    <button type="submit" data-href=""
-                        class="btn btn-primary me-sm-3 me-1 waves-effect waves-light delete-yes-btn"
-                        onclick="window.location.href = $(this).attr('data-href')">{{ __('Yes') }}</button>
-                    <button type="reset" class="btn btn-label-secondary btn-reset waves-effect"
-                        onclick="$('#delete-yes-btn').data('href','');" data-bs-dismiss="modal" aria-label="Close">{{
+                    <button type="submit" data-href="" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light delete-yes-btn" onclick="window.location.href = $(this).attr('data-href')">{{ __('Yes') }}</button>
+                    <button type="reset" class="btn btn-label-secondary btn-reset waves-effect" onclick="$('#delete-yes-btn').data('href','');" data-bs-dismiss="modal" aria-label="Close">{{
                         __('No')}}</button>
                 </div>
             </div>
@@ -155,8 +132,7 @@
                             </p>
                         </div>
                         <div class="col border rounded mx-2">
-                            <p class="m-2"><strong>Min Word Count:</strong><span
-                                    class="minimum_word_count_required"></span></p>
+                            <p class="m-2"><strong>Min Word Count:</strong><span class="minimum_word_count_required"></span></p>
                         </div>
                         <div class="col border rounded mx-2">
                             <p class="m-2"><strong>Backlink :</strong> <span class="backlink_type"></span></p>
@@ -170,12 +146,10 @@
                             <p class="m-2"><strong>TAT:</strong> <span class="publishing_time"></span></p>
                         </div>
                         <div class="col border rounded mx-2">
-                            <p scope="col" class="m-2"><strong>Link Insertion Price:</strong>$<span
-                                    class="link_insertion_price"></span></p>
+                            <p scope="col" class="m-2"><strong>Link Insertion Price:</strong>$<span class="link_insertion_price"></span></p>
                         </div>
                         <div class="col border rounded mx-2">
-                            <p scope="col" class="m-2"><strong>Maximum no.of backlinks:</strong><span
-                                    class="maximum_no_of_backlinks_allowed"></span></p>
+                            <p scope="col" class="m-2"><strong>Maximum no.of backlinks:</strong><span class="maximum_no_of_backlinks_allowed"></span></p>
                         </div>
                     </div>
                 </div>
@@ -196,8 +170,7 @@
                 <div class="container">
                     <div class="row my-2">
                         <div class="col mx-2 d-flex justify-content-center">
-                            <button scope="col" class="btn btn-label-primary m-2"><a class="sample_post_url"
-                                    href="">View Sample</a></button>
+                            <button scope="col" class="btn btn-label-primary m-2"><a class="sample_post_url" href="">View Sample</a></button>
                         </div>
                     </div>
                 </div>
@@ -305,12 +278,12 @@
         const url = `/lslb-admin/website/${websiteId}/update-admin-price`;
 
         fetch(url, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                },
-                body: formData,
-            })
+                method: 'POST'
+                , headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                , }
+                , body: formData
+            , })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -346,6 +319,7 @@
                 console.error('Error:', error);
             });
     });
+
 </script>
 <script>
     var table = $('#website-tbl').DataTable();
@@ -423,8 +397,8 @@
         }
 
         updateStatus($id, $status, {
-            linkedinSession,
-            guestPostPrice
+            linkedinSession
+            , guestPostPrice
         });
         $('#approvalModal').modal('hide');
     });
@@ -434,16 +408,16 @@
         const $url = $('#url').val();
 
         const data = {
-            _token: $_token,
-            status: $status,
-            ...additionalData
+            _token: $_token
+            , status: $status
+            , ...additionalData
         };
 
         $.ajax({
-            type: 'POST',
-            url: `${$url}/${$id}`,
-            data: data,
-            success: function(response) {
+            type: 'POST'
+            , url: `${$url}/${$id}`
+            , data: data
+            , success: function(response) {
                 const $obj = JSON.parse(response);
 
                 if ($obj.error) {
@@ -459,8 +433,8 @@
                     $(`li[data-item="${$status}"]`).addClass('active');
                     $(`.statusBtnTitle${$id}`).text($status);
                 }
-            },
-            error: function(error) {
+            }
+            , error: function(error) {
                 $('#alert')
                     .attr('class', 'alert alert-danger')
                     .html(`<ul class="m-auto"><li>${error.responseText || 'An error occurred.'}</li></ul>`);
@@ -515,5 +489,6 @@
         //     });
         // }
     }
+
 </script>
 @endpush

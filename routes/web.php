@@ -20,6 +20,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
