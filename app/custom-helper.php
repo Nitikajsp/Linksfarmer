@@ -10,6 +10,7 @@ if (!function_exists('base_url')) {
             return $base_url . $mainSlug . $slug;
         } else {
             return $base_url . $slug;
+            // return $base_url . $slug;
         }
     }
 }

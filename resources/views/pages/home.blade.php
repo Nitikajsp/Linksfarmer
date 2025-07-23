@@ -49,9 +49,6 @@ $content = 'Links Farmer combines the best of a guest post marketplace and link 
                             <a href="{{ route('login') }}" class="outlined-btn">Sell Guest Post</a>
                             @endif
                         </div>
-
-
-
                     </div>
                     <div id="heroDashboardAnimation" class="hero-animation-img">
                         <div id="heroAnimationImg" class="position-relative hero-dashboard-img">

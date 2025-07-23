@@ -759,6 +759,7 @@ input:focus-visible {
   background-image: url('../../img/dots_square.png'), url('../../img/card_ellipse.png');
   background-position: 95% 90%, right top;
   background-repeat: no-repeat;
+  margin: 0px auto;
 }
 
 

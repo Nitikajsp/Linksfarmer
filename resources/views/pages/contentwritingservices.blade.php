@@ -59,7 +59,7 @@ $content = 'Create impactful content with Links Farmer’s content writing servi
             </div>
         </section>
         <!-- Hero: End -->
-        <section>
+        {{-- <section>
             <div class="container">
                 <div class="plans_card_wrap">
                     <div class="row g-2 gy-md-5  ">
@@ -69,7 +69,7 @@ $content = 'Create impactful content with Links Farmer’s content writing servi
                                     Aren’t you able to be sure which plan can suit you? Then, contact us to make an informed decision ever!
 
                                 </h3>
-                                <button type="button" class="btn-white">Talk to an Expert</button>
+                                <button type="button" class="btn-white" onclick="Tawk_API.maximize()">Talk to an Expert</button>
                             </div>
                         </div>
                         <div class="col-lg-6  col-sm-12">
@@ -78,10 +78,27 @@ $content = 'Create impactful content with Links Farmer’s content writing servi
                                     Simply, elevate your strategy and enhance your content with our customized plan for your required guest posts.
 
                                 </h3>
-                                <button type="button" class="btn-white">Build Your Customize Plan</button>
+                                <button type="button" class="btn-white" onclick="window.location.href='{{ route('register') }}'">Build Your Customize Plan</button>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section> --}}
+
+        <section class="section-py">
+            <div class="container">
+                <div class="plans_card_wrap ">
+
+                    <div class="custom_card">
+                        <h3>
+                            Aren’t you able to be sure which plan can suit you? Then, contact us to make an informed decision ever!
+                        </h3>
+                        {{-- <button type="button" class="btn-white">Talk to an Expert</button> --}}
+                        <button type="button" class="btn-white" onclick="Tawk_API.maximize()">Talk to an Expert</button>
+
+                    </div>
+
                 </div>
             </div>
         </section>

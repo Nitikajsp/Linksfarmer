@@ -1,5 +1,5 @@
 <?php
-$pagetitale = 'White Label SEO Reselling | Links Farmer';
+$pagetitale = 'Thank You | Links Farmer';
 $content = 'Offer premium SEO services under your brand with Links Farmer’s white-label SEO reselling solutions. Grow your business without extra effort.';
 ?>
 @include('pages.header')

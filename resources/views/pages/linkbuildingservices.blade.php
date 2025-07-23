@@ -362,7 +362,7 @@ $content = 'Links Farmer offers professional link-building solutions to boost yo
                         <p>Enhance your search engine ranking by partnering with LINKSFARMER. We help to create a tailored link-building strategy!
                         </p>
                     </div>
-                    <button type="button" class="btn-white d-block mx-auto">Register Now</button>
+                    <button type="button" class="btn-white d-block mx-auto" onclick="window.location.href='{{ route('register') }}'">Register Now</button>
                 </div>
             </div>
         </section>
@@ -614,7 +614,7 @@ $content = 'Links Farmer offers professional link-building solutions to boost yo
                         <p>Work with LINKSFARMER to develop a link-building strategy that boosts your search engine ranking.
                         </p>
                     </div>
-                    <button type="button" class="btn-white d-block mx-auto">Let’s get started</button>
+                    <button type="button" class="btn-white d-block mx-auto" onclick="window.location.href='{{ route('register') }}'">Let’s get started</button>
                 </div>
             </div>
         </section>

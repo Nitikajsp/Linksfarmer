@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -189,6 +190,9 @@ Route::controller(AdminController::class)->group(function () {
 });
 
 Route::post('/withdrawal/update-status', [AdminController::class, 'updateWithdrawalStatus'])->name('updateWithdrawalStatus');
+
+Route::post('/inquiry-submit', [InquiryController::class, 'submit'])->name('inquiry.submit');
+
 
 Route::get('/lslb-admin/login', function () {
     return view('lslbadmin.login');

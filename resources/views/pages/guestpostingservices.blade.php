@@ -55,32 +55,24 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                         </div>
                     </div>
                     <div class="d-flex flex-wrap justify-content-center gap-2 align-items-center">
-                        <a href="{{ route('login') }}" class="filled-btn">Place your Order Now!</a>
+                        <a href="{{ route('register') }}" class="filled-btn">Place your Order Now!</a>
                     </div>
                 </div>
             </div>
         </section>
-        <section>
+        <section class="section-py">
             <div class="container">
-                <div class="plans_card_wrap mb-5">
-                    <div class="row g-2 gy-md-5  ">
-                        <div class="col-lg-6  col-sm-12">
-                            <div class="custom_card">
-                                <h3>
-                                    Aren’t you able to be sure which plan can suit you? Then, contact us to make an informed decision ever!
-                                </h3>
-                                <button type="button" class="btn-white">Talk to an Expert</button>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  col-sm-12">
-                            <div class="custom_card">
-                                <h3>
-                                    Simply, elevate your strategy and enhance your content with our customized plan for your required guest posts.
-                                </h3>
-                                <button type="button" class="btn-white">Build Your Customize Plan</button>
-                            </div>
-                        </div>
+                <div class="plans_card_wrap ">
+
+                    <div class="custom_card">
+                        <h3>
+                            Aren’t you able to be sure which plan can suit you? Then, contact us to make an informed decision ever!
+                        </h3>
+                        {{-- <button type="button" class="btn-white">Talk to an Expert</button> --}}
+                        <button type="button" class="btn-white" onclick="Tawk_API.maximize()">Talk to an Expert</button>
+
                     </div>
+
                 </div>
             </div>
         </section>
@@ -538,7 +530,7 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                         <h2>Magnify your backlink strategy with our promising services of AI-driven guest posting.
                         </h2>
                     </div>
-                    <button type="button" class="btn-white d-block mx-auto">Book a Free Demo now!</button>
+                    <button type="button" class="btn-white d-block mx-auto" onclick="window.location.href='{{ route('contact-us') }}'">Book a Free Demo now!</button>
                 </div>
             </div>
         </section>
@@ -679,13 +671,10 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                 <div class="custom-accordian accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                aria-controls="flush-collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                 Why is guest posting vital? </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Guest posting is important because it helps you establish yourself and your website
@@ -697,14 +686,11 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                aria-controls="flush-collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 How does a guest posting service work?
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Guest posting services aid in finding websites that accept guest posts, creating
@@ -715,14 +701,11 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                aria-controls="flush-collapseThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                 Is buying a guest posting service a good idea?
                             </button>
                         </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     It depends on the owners of the website. Buying guest post backlinks from
@@ -735,14 +718,11 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                aria-controls="flush-collapseFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                                 How is considering guest posting service safe?
                             </button>
                         </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Using guest posting services builds relationships with reputable and reliable blogs.
@@ -755,14 +735,11 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseFive" aria-expanded="false"
-                                aria-controls="flush-collapseFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
                                 Can I buy guest blog posts?
                             </button>
                         </h2>
-                        <div id="flush-collapseFive" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Yeah, you can! LINKSFARMER has some high-quality guest blogs in our database for
@@ -858,7 +835,7 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                         </p>
                     </div>
 
-                    <button type="button" class="btn-white d-block mx-auto">Book a Free Demo now!</button>
+                    <button type="button" class="btn-white d-block mx-auto" onclick="window.location.href='{{ route('contact-us') }}'">Book a Free Demo now!</button>
                 </div>
             </div>
         </section>
@@ -892,6 +869,7 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                 window.location.href = '/login'; // Replace '/login' with your actual login page URL
             }
         });
+
     </script>
 </body>
 
