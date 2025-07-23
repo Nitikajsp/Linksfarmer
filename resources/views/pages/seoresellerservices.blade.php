@@ -408,7 +408,7 @@ $content = 'Offer premium SEO services under your brand with Links Farmer’s wh
                 </div>
             </div>
             <div class="d-flex flex-wrap justify-content-center gap-2 align-items-center mt-5">
-                <a href="#landingPricing" class="filled-btn">Get in touch with us</a>
+                <a href={{route('contact-us')}} class="filled-btn">Get in touch with us</a>
             </div>
         </section>
         <section id="services" class="section-py services-section light-bg">

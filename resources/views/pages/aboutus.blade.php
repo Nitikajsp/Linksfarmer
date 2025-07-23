@@ -84,7 +84,7 @@ $content = 'Links Farmer is a marketplace platform that offers guest posts and l
                         <p>Join us now and see the results to satisfy yourself!
                         </p>
                     </div>
-                    <button type="button" class="btn-white d-block mx-auto">Connect to Our Experts</button>
+                    <button type="button" class="btn-white d-block mx-auto" onclick="Tawk_API.maximize()">Connect to Our Experts</button>
                 </div>
             </div>
         </section>
