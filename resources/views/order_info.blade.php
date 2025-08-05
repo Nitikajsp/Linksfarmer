@@ -196,7 +196,10 @@ if (Auth::user()->role->name === 'Admin') $page = 'lslbadmin.sidebar';
                                 @foreach ($attachments as $index => $attachment)
                                 <div class="mb-3">
                                     <strong>Article Doc {{ $index + 1 }}:</strong>
-                                    <a href="{{ url('/storage/app/' . trim($attachment)) }}" target="_blank" class="btn btn-primary">Download Docx</a>
+                                    {{-- <a href="{{ url('/storage/app/' . trim($attachment)) }}" target="_blank" class="btn btn-primary">Download Docx</a> --}}
+                                   <a href="{{ route('secure.download', basename(trim($attachment))) }}" class="btn btn-primary">Download Docx</a>
+
+
 
                                     {{-- Show Blog Title Below the Document --}}
                                     @if (!empty($titles[$index]))

@@ -5,6 +5,7 @@ $content = 'Links Farmer offers premium guest posting services to help you build
 @include('pages.header')
 
 <body>
+
     <div data-bs-spy="scroll" class="scrollspy-example">
         <section class="hero-section">
             <div class=" landing-hero position-relative">
@@ -16,7 +17,8 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                             Reach?</h1>
                         <!-- <h1>Welcome to LINKSFARMER – Your Trusted <br /> Partner in Link Building!</h1> -->
                         <h3 class="page_subtitle">
-                            Enhance your website's authority, increase traffic, and boost conversions through our effective guest posting strategies. Our tactics will mesmerize you!</h3>
+                            Enhance your website's authority, increase traffic, and boost conversions through our
+                            effective guest posting strategies. Our tactics will mesmerize you!</h3>
 
                     </div>
                     <div class="guest_posting_wrap mb-5">
@@ -66,10 +68,12 @@ $content = 'Links Farmer offers premium guest posting services to help you build
 
                     <div class="custom_card">
                         <h3>
-                            Aren’t you able to be sure which plan can suit you? Then, contact us to make an informed decision ever!
+                            Aren’t you able to be sure which plan can suit you? Then, contact us to make an informed
+                            decision ever!
                         </h3>
                         {{-- <button type="button" class="btn-white">Talk to an Expert</button> --}}
-                        <button type="button" class="btn-white" onclick="Tawk_API.maximize()">Talk to an Expert</button>
+                        <button type="button" class="btn-white" onclick="Tawk_API.maximize()">Talk to an
+                            Expert</button>
 
                     </div>
 
@@ -83,7 +87,9 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     Our Guest
                     <span class="animated-text"> Post Packages </span>
                 </h2>
-                <h5 class="subtitle2-section text-center">Why to call us? We pride ourselves on offering unbeatable prices ensuring that with any of our appealing packages. Users can receive top-notch services at fantastic rates by reaching us.</h5>
+                <h5 class="subtitle2-section text-center">Why to call us? We pride ourselves on offering unbeatable
+                    prices ensuring that with any of our appealing packages. Users can receive top-notch services at
+                    fantastic rates by reaching us.</h5>
 
                 <div class="custom_radio_buttons">
                     <label>I want to buy a Guest Post Package
@@ -137,10 +143,65 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                         <i class="ti ti-circle-check"></i> <span>Single revision included: Single</span>
                                     </li>
                                 </ul>
-                                <button type="button" class="btn-white mt-5 d-block mx-auto w-100 ">Choose Plan</button>
+                                <button type="button" class="btn-white mt-4 w-100 paypal-btn"
+                                    data-plan="Lite" data-amount="179">
+                                    Choose Plan
+                                </button>
                             </div>
                         </div>
                     </div>
+                    {{-- <div class="col-lg-4 col-sm-12">
+                        <div class="pricing_plan_card">
+                            <div class="upper_wrap">
+                                <p>Lite</p>
+                                <h3 class="mb-0">$179</h3>
+                            </div>
+                            <div class="bottom_wrap">
+                                <ul>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Number of Posts: 3</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Domain Authority (DA): 10-20</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Word Count: 500+</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>1 Keyword / URL</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>1 Do-Follow link</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Links on Real Website</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Delivery time 7-14 days</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Google-indexed websites</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Niche Relevant Blog</span>
+                                    </li>
+                                    <li>
+                                        <i class="ti ti-circle-check"></i> <span>Single revision included: Single</span>
+                                    </li>
+                                </ul>
+
+                                <button type="button" class="btn-white mt-5 d-block mx-auto w-100 paypal-btn"
+                                    data-plan="Lite" data-amount="179">
+                                    Choose Plan
+                                </button>
+
+                                <!-- ADD THIS BELOW THE BUTTON -->
+                                <div id="paypal-button-container" class="mt-3"></div>
+
+                            </div>
+                        </div>
+                    </div> --}}
+
                     <div class="col-lg-4 col-sm-12">
                         <div class="pricing_plan_card colored_card ">
                             <div class="upper_wrap">
@@ -220,10 +281,12 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                         <i class="ti ti-circle-check"></i> <span>Niche Relevant Blog</span>
                                     </li>
                                     <li>
-                                        <i class="ti ti-circle-check"></i> <span>Single revision included: Multiple</span>
+                                        <i class="ti ti-circle-check"></i> <span>Single revision included:
+                                            Multiple</span>
                                     </li>
                                 </ul>
-                                <button type="button" class="btn-white mt-5 d-block mx-auto w-100 ">Choose Plan</button>
+                                <button type="button" class="btn-white mt-5 d-block mx-auto w-100 ">Choose
+                                    Plan</button>
                             </div>
                         </div>
                     </div>
@@ -237,7 +300,10 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     Transform Your
                     <span class="animated-text"> Strategy with LINKSFARMER </span>Services
                 </h2>
-                <h5 class="subtitle2-section text-center">Navigating traditional guest posting can be a daunting and time-consuming task with low success rates. But we ensure you to easily purchase guest posts. Explore from a vast selection of over 114,828 reputable sites across various niches. We help you access high-quality backlinks and guest posts that are tailored to your needs. </h5>
+                <h5 class="subtitle2-section text-center">Navigating traditional guest posting can be a daunting and
+                    time-consuming task with low success rates. But we ensure you to easily purchase guest posts.
+                    Explore from a vast selection of over 114,828 reputable sites across various niches. We help you
+                    access high-quality backlinks and guest posts that are tailored to your needs. </h5>
 
 
                 <div class="data_wrap">
@@ -423,7 +489,8 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                             say about their experience.
                         </p>
                         <div class="landing-reviews-btns">
-                            <button id="reviews-previous-btn" class="btn  swiper-btn me-3 scaleX-n1-rtl" type="button">
+                            <button id="reviews-previous-btn" class="btn  swiper-btn me-3 scaleX-n1-rtl"
+                                type="button">
                                 <i class="ti ti-chevron-left ti-sm"></i>
                             </button>
                             <button id="reviews-next-btn" class="btn  swiper-btn scaleX-n1-rtl" type="button">
@@ -530,7 +597,8 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                         <h2>Magnify your backlink strategy with our promising services of AI-driven guest posting.
                         </h2>
                     </div>
-                    <button type="button" class="btn-white d-block mx-auto" onclick="window.location.href='{{ route('contact-us') }}'">Book a Free Demo now!</button>
+                    <button type="button" class="btn-white d-block mx-auto"
+                        onclick="window.location.href='{{ route('contact-us') }}'">Book a Free Demo now!</button>
                 </div>
             </div>
         </section>
@@ -607,7 +675,9 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     <img src="{{ asset_url('img/guest-posting/img_1.png') }}" alt="linksfarmer-img">
                                 </div>
                                 <h6>Improves Search Ranking</h6>
-                                <p>Boost your search ranking by securing 100% do-follow backlinks. Through reliable guest post services, you are able to signal search engines to make sure that your website is relevant.
+                                <p>Boost your search ranking by securing 100% do-follow backlinks. Through reliable
+                                    guest post services, you are able to signal search engines to make sure that your
+                                    website is relevant.
 
                                 </p>
                             </div>
@@ -619,7 +689,9 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     <img src="{{ asset_url('img/guest-posting/img_2.png') }}" alt="linksfarmer-img">
                                 </div>
                                 <h6>Boost Domain Authority </h6>
-                                <p>At LINKSFARMER, you can publish guest posts on reputable high-DA websites. It gonna can enhance your site's value and trustworthiness in Google's view. This is what ultimately increases your domain authority.</p>
+                                <p>At LINKSFARMER, you can publish guest posts on reputable high-DA websites. It gonna
+                                    can enhance your site's value and trustworthiness in Google's view. This is what
+                                    ultimately increases your domain authority.</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 ">
@@ -628,7 +700,8 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     <img src="{{ asset_url('img/guest-posting/img_3.png') }}" alt="linksfarmer-img">
                                 </div>
                                 <h6>Drive High-Intent Traffic</h6>
-                                <p>Publishing relevant guest blogs on niche websites helps to attract motivated traffic. They can be easier to convert.</p>
+                                <p>Publishing relevant guest blogs on niche websites helps to attract motivated traffic.
+                                    They can be easier to convert.</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 ">
@@ -637,7 +710,9 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     <img src="{{ asset_url('img/guest-posting/img_4.png') }}" alt="linksfarmer-img">
                                 </div>
                                 <h6>Increases Brand Awareness</h6>
-                                <p>We, LINKSFARMER serve as a leading guest posting platform and enhance brand visibility for sure. By publishing this highly niche-relevant content, you can draw diverse audiences to your platform for sure. </p>
+                                <p>We, LINKSFARMER serve as a leading guest posting platform and enhance brand
+                                    visibility for sure. By publishing this highly niche-relevant content, you can draw
+                                    diverse audiences to your platform for sure. </p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 ">
@@ -646,7 +721,9 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     <img src="{{ asset_url('img/guest-posting/img_5.png') }}" alt="linksfarmer-img">
                                 </div>
                                 <h6>High-Quality Link-Buildings </h6>
-                                <p>Yup, purchasing quality guest posts allows you to gain valuable backlinks. It even improves your link-building strategy, and ultimately strengthens your backlink profile. So simply enhance your rankings with us.
+                                <p>Yup, purchasing quality guest posts allows you to gain valuable backlinks. It even
+                                    improves your link-building strategy, and ultimately strengthens your backlink
+                                    profile. So simply enhance your rankings with us.
                                 </p>
                             </div>
                         </div>
@@ -656,7 +733,9 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     <img src="{{ asset_url('img/guest-posting/img_6.png') }}" alt="linksfarmer-img">
                                 </div>
                                 <h6>Enhances Credibility</h6>
-                                <p>Publishing insightful guest posts on high-authority websites not only turns you into an industry expert. Besides, it enhances your credibility and improves your search ranking through increased traffic.</p>
+                                <p>Publishing insightful guest posts on high-authority websites not only turns you into
+                                    an industry expert. Besides, it enhances your credibility and improves your search
+                                    ranking through increased traffic.</p>
                             </div>
                         </div>
                     </div>
@@ -671,26 +750,32 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                 <div class="custom-accordian accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
                                 Why is guest posting vital? </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Guest posting is important because it helps you establish yourself and your website
                                     and build relationships. You can easily drive traffic to your website and improve
-                                    search engine rankings. 
+                                    search engine rankings.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
                                 How does a guest posting service work?
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Guest posting services aid in finding websites that accept guest posts, creating
@@ -701,11 +786,14 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
                                 Is buying a guest posting service a good idea?
                             </button>
                         </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     It depends on the owners of the website. Buying guest post backlinks from
@@ -718,11 +806,14 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                aria-controls="flush-collapseFour">
                                 How is considering guest posting service safe?
                             </button>
                         </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Using guest posting services builds relationships with reputable and reliable blogs.
@@ -735,11 +826,14 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                aria-controls="flush-collapseFive">
                                 Can I buy guest blog posts?
                             </button>
                         </h2>
-                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <p>
                                     Yeah, you can! LINKSFARMER has some high-quality guest blogs in our database for
@@ -816,7 +910,7 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <h6>SEO Reseller</h6>
-                                        <i class="ti ti-arrow-narrow-right "></i>
+                                        <i class="ti ti-arrow-narrow-right"></i>
                                     </div>
                                 </div>
                             </a>
@@ -831,11 +925,13 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                 <div class="linear_bg_wrap">
                     <div class="text_wrap">
                         <h2>Foster Your Traffic Effortlessly With Dynamic Guest Posts</h2>
-                        <p>Schedule your free demo and discover how the marketplace links you with premium blogs in no time!
+                        <p>Schedule your free demo and discover how the marketplace links you with premium blogs in no
+                            time!
                         </p>
                     </div>
 
-                    <button type="button" class="btn-white d-block mx-auto" onclick="window.location.href='{{ route('contact-us') }}'">Book a Free Demo now!</button>
+                    <button type="button" class="btn-white d-block mx-auto"
+                        onclick="window.location.href='{{ route('contact-us') }}'">Book a Free Demo now!</button>
                 </div>
             </div>
         </section>
@@ -844,6 +940,11 @@ $content = 'Links Farmer offers premium guest posting services to help you build
 
 
     @include('pages.footer')
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Ab3a3tOm5v5-2drkN7VQeF53ariOes4VBM2CzrVfnrjHDOAsezhQD3VzQrjHufPTFr6rwTMp7lyJEnLf&currency=USD">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <script src="{{ asset_url('libs/popper/popper.js') }}"></script>
     <script src="{{ asset_url('js/bootstrap.js') }}"></script>
@@ -869,8 +970,65 @@ $content = 'Links Farmer offers premium guest posting services to help you build
                 window.location.href = '/login'; // Replace '/login' with your actual login page URL
             }
         });
-
     </script>
+
+    <script>
+        let selectedPlan = '';
+        let selectedAmount = 0;
+
+        document.querySelectorAll('.paypal-btn').forEach(function(button) {
+            button.addEventListener('click', function() {
+                selectedPlan = this.getAttribute('data-plan');
+                selectedAmount = this.getAttribute('data-amount');
+
+                // Clear previous button
+                document.getElementById('paypal-button-container').innerHTML = '';
+
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: selectedAmount
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            fetch("{{ route('paypal.webhook') }}", {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({
+                                        orderID: data.orderID,
+                                        payerID: data.payerID,
+                                        plan: selectedPlan,
+                                        amount: selectedAmount,
+                                        details: details
+                                    })
+                                })
+                                .then(res => res.json())
+                                .then(res => {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Payment Successful',
+                                        text: 'Thank you! Your transaction was completed.',
+                                        confirmButtonColor: '#3085d6',
+                                        confirmButtonText: 'OK'
+                                    }).then(() => {
+                                        window.location.href = "/thank-you";
+                                    });
+                                });
+                        });
+                    }
+                }).render('#paypal-button-container');
+            });
+        });
+    </script>
+
 </body>
 
 </html>

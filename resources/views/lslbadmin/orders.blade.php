@@ -54,7 +54,8 @@
                                 <td><a href="{{ $v->website_url }}" target="_blank" title="Web Site Link ({{ $v->website_url }})" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-secondary" data-bs-original-title="{{ $v->website_url }}">Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
                                 <td>
                                     @if($v->attachment != '')
-                                    <a href="{{ url('/storage/app/'.$v->attachment) }}">{{ $v->article_title }}</a>
+                                    {{-- <a href="{{ url('/storage/app/'.$v->attachment) }}">{{ $v->article_title }}</a> --}}
+                                    <a href="{{ route('artical.download', basename(trim($v->attachment))) }}">{{ $v->article_title }}</a>
                                     @else
                                     Data Not Found
                                     @endif
