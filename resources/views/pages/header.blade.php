@@ -289,7 +289,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link mega-dropdown-link"
-                                                href="#">
+                                                href="{{ route('help') }}">
                                                 <i class="ti ti-circle me-1"></i>
                                                 Help Center
                                             </a>

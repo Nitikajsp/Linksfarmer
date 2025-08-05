@@ -18,6 +18,8 @@ use DOMDocument;
 use Illuminate\Support\Facades\DB;
 use Stripe\Stripe;
 use Stripe\Charge;
+use Illuminate\Support\Facades\Storage;
+
 
 class OrdersController extends Controller
 {
@@ -80,8 +82,7 @@ class OrdersController extends Controller
 
             if ($validated['status'] === 'update' && !empty($validated['reason'])) {
                 $order->advertiser_change = $validated['reason'];
-                $order->status = $validated['status']; 
-
+                $order->status = $validated['status'];
             }
 
             $order->save();
@@ -355,51 +356,51 @@ class OrdersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-public function updateStatus(Request $request, string $id)
-{
-    if (!empty($request->post('status'))) {
-        $order = lslbOrder::find($id);
-        if (!$order) {
-            return response()->json(['error' => 'Order not found'], 404);
-        }
+    public function updateStatus(Request $request, string $id)
+    {
+        if (!empty($request->post('status'))) {
+            $order = lslbOrder::find($id);
+            if (!$order) {
+                return response()->json(['error' => 'Order not found'], 404);
+            }
 
-        $validatedData = $request->validate([
-            'status' => 'required',
-        ]);
+            $validatedData = $request->validate([
+                'status' => 'required',
+            ]);
 
-        $status = $validatedData['status'];
-        $note = $request->post('note', null);
-        $url = $request->post('url', null);
+            $status = $validatedData['status'];
+            $note = $request->post('note', null);
+            $url = $request->post('url', null);
 
-        $updateData = ['status' => $status];
+            $updateData = ['status' => $status];
 
-        if ($order->advertiser_status === 'update') {
-            $updateData['advertiser_status'] = 'complete';
-        }
+            if ($order->advertiser_status === 'update') {
+                $updateData['advertiser_status'] = 'complete';
+            }
 
-        if ($status === 'rejected' && $note) {
-            $updateData['rejection_reason'] = $note;
-        }
+            if ($status === 'rejected' && $note) {
+                $updateData['rejection_reason'] = $note;
+            }
 
-        if ($status === 'complete' && $url) {
-            $updateData['completion_url'] = $url;
-        }
+            if ($status === 'complete' && $url) {
+                $updateData['completion_url'] = $url;
+            }
 
-        $order->update($updateData);
+            $order->update($updateData);
 
-        $website = lslbWebsite::where('id', $order->website_id)->first();
-        $user = lslbUser::where('id', $website->user_id)->first();
-        $recipientEmail = ($user->role === 1) ? $user->email : $order->email;
+            $website = lslbWebsite::where('id', $order->website_id)->first();
+            $user = lslbUser::where('id', $website->user_id)->first();
+            $recipientEmail = ($user->role === 1) ? $user->email : $order->email;
 
-        $statusText = ucwords($status);
-        $noteText = ($status === 'rejected' && !empty($note)) ? "<p><strong>Reason for Rejection:</strong> " . ucfirst($note) . "</p>" : '';
-        $urlText = ($status === 'complete' && !empty($url)) ? "<p><strong>Completion URL:</strong> <a href='" . $url . "'>" . $url . "</a></p>" : '';
+            $statusText = ucwords($status);
+            $noteText = ($status === 'rejected' && !empty($note)) ? "<p><strong>Reason for Rejection:</strong> " . ucfirst($note) . "</p>" : '';
+            $urlText = ($status === 'complete' && !empty($url)) ? "<p><strong>Completion URL:</strong> <a href='" . $url . "'>" . $url . "</a></p>" : '';
 
-        $customData = [
-            'from_name' => "Links Farmer",
-            'mailaddress' => "no-reply@linksfarmer.com",
-            'subject' => 'Notification: Links Farmer - Order Status Update',
-            'msg' => "<p>Your order status has been updated:</p>
+            $customData = [
+                'from_name' => "Links Farmer",
+                'mailaddress' => "no-reply@linksfarmer.com",
+                'subject' => 'Notification: Links Farmer - Order Status Update',
+                'msg' => "<p>Your order status has been updated:</p>
                         <ul>
                             <li><strong>Order ID:</strong> " . $order->order_id . "</li>
                             <li><strong>Website:</strong> " . $website->website_url . "</li>
@@ -412,15 +413,15 @@ public function updateStatus(Request $request, string $id)
                             <a href='" . base_url('/advertiser/orders') . "'>View Completed Orders</a>" : "") . "
                         <p>If you have any questions or concerns, feel free to reach out to our customer support team.</p>
                         <p>Thank you for choosing Links Farmer!</p>",
-        ];
+            ];
 
-        Mail::to($recipientEmail)->send(new MyMail($customData));
+            Mail::to($recipientEmail)->send(new MyMail($customData));
 
-        return response()->json(['success' => 'Order status updated successfully', 'error' => '']);
-    } else {
-        return response()->json(['error' => 'Oops! Order status update failed', 'success' => '']);
+            return response()->json(['success' => 'Order status updated successfully', 'error' => '']);
+        } else {
+            return response()->json(['error' => 'Oops! Order status update failed', 'success' => '']);
+        }
     }
-}
 
 
     public function payment(Request $request)
@@ -438,5 +439,18 @@ public function updateStatus(Request $request, string $id)
             return redirect()->route('payment.failure');
         }
         return redirect()->route('payment.success');
+    }
+
+    public function secureDownload($filename)
+    {
+        $filename = trim($filename, '"'); // just in case quotes added
+
+        $path = storage_path('app/uploads/' . $filename);
+
+        if (!file_exists($path)) {
+            abort(404, 'File not found');
+        }
+
+        return response()->download($path);
     }
 }

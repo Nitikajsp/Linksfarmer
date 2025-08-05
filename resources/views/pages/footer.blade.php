@@ -61,7 +61,7 @@
                         </li>
 
                         <li class="mb-3">
-                            <a href="#" class="footer-link">Write for Us</a>
+                            <a href="{{route('writeus')}}" class="footer-link">Write for Us</a>
                         </li>
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                     <h6 class="footer-title mb-4">Get Update</h6>
                     <form class="footer-form">
                         <div class=" mt-1">
-                            <input type="email" class=" custom-input mb-4" id="footer-email"
+                            <input type="email" class="custom-input mb-4" id="footer-email"
                                 placeholder="Your email address" />
                             <button type="submit" class="filled-btn">
                                 Submit </button>
@@ -85,7 +85,7 @@
         <div class="container-xxl">
             <div class="footer-container d-flex align-items-center justify-content-around">
                 <div>
-                    ©2025 Links Farmer All Rights Reserved.
+                    ©{{ date('Y') }} Links Farmer All Rights Reserved.
 
 
                 </div>

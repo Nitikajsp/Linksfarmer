@@ -19,9 +19,12 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\ServicePayPalController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Razorpay\Api\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +54,7 @@ Route::get('/test-mail', function () {
 
     Mail::raw($details['body'], function ($message) use ($details) {
         $message->to('nitika@jspinfotech.com')
-                ->subject($details['subject']);
+            ->subject($details['subject']);
     });
 
     return 'Test email sent!';
@@ -82,6 +85,8 @@ Route::get('/thank-you', function () {
 })->name('thankyou');
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/faq', [PagesController::class, 'faqpage'])->name('faq');
+Route::get('/help-center', [PagesController::class, 'helpcenter'])->name('help');
+Route::get('/write-us', [PagesController::class, 'writeus'])->name('writeus');
 Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -111,6 +116,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/website/filter', 'filterData')->name('website.filter');
             Route::get('/publisher/sales', 'index')->name('publisher.sales');
             Route::post('/check-website', 'checkWebsite')->name('check.website');
+
+            Route::get('/download-google-analytics/{filename}', 'Downloadgoogledoc')->name('google.download');
         });
 
         Route::controller(OrdersController::class)->group(function () {
@@ -126,10 +133,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/paypal/create/{price}/{orderId}', [PaypalPaymentController::class, 'createPayment'])->name('paypal.create');
         Route::get('/paypal/payment-success', [PaypalPaymentController::class, 'paymentSuccess'])->name('payment.success');
         Route::get('/paypal/payment-cancel/{orderId}', [PaypalPaymentController::class, 'paymentCancel'])->name('payment.cancel');
+
         Route::post('/razorpay/create/', [RazorpayPaymentController::class, 'makePayment'])->name('razorpay.create');
         Route::post('/razorpay/callback', [RazorpayPaymentController::class, 'callback'])->name('razorpay.callback');
         Route::get('/razorpay/cancel', [RazorpayPaymentController::class, 'cancel'])->name('razorpay.cancel');
-
 
         Route::controller(PaymentController::class)->group(function () {
 
@@ -165,6 +172,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/order/info/{id}', 'orderInfo')->name('order.info');
         Route::post('/order/update-status/{id}', 'updateStatus')->name('order.update.status');
+        Route::get('/download/{filename}', 'secureDownload')->name('secure.download');
     });
 
     Route::post('charge', [StripePaymentController::class, 'charge'])->name('stripe.charge');
@@ -186,12 +194,19 @@ Route::controller(AdminController::class)->group(function () {
         Route::post('/lslb-admin/user/{id}', 'userUpdate')->name('lslbadmin.user.update');
         Route::get('/lslb-admin/user/{id}/delete', 'userDestroy')->name('lslbadmin.user.delete');
         Route::get('/lslb-admin/contact', 'getcontact')->name('lslbadmin.contact');
+        Route::get('/download-artical/{filename}', 'articalDownload')->name('artical.download');
     });
 });
 
 Route::post('/withdrawal/update-status', [AdminController::class, 'updateWithdrawalStatus'])->name('updateWithdrawalStatus');
 
 Route::post('/inquiry-submit', [InquiryController::class, 'submit'])->name('inquiry.submit');
+
+Route::post('/paypal/webhook', [ServicePayPalController::class, 'handleWebhook'])->name('paypal.webhook');
+Route::get('/individual-guest-post', function () {
+    return view('pages.guestpostingservices'); // તમે જે પણ Blade ફાઈલ બનાવો
+})->name('individual.guestpost');
+
 
 
 Route::get('/lslb-admin/login', function () {

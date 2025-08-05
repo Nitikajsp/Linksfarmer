@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 Validator::extend('url', function ($attribute, $value, $parameters, $validator) {
     return preg_match('/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/', $value);
@@ -371,5 +372,21 @@ class WebsiteController extends Controller
         }
 
         return response()->json(['exists' => false, 'message' => 'This website URL is available.']);
+    }
+
+    public function Downloadgoogledoc($filename)
+    {
+        $filename = trim($filename, '"');
+        $path = storage_path('app/verification/' . $filename);
+
+        if (!file_exists($path)) {
+            abort(404, 'File not found');
+        }
+
+        // Show PDF inline (in new tab)
+        return response()->file($path, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"'
+        ]);
     }
 }

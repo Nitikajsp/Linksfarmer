@@ -516,4 +516,19 @@ class AdminController extends Controller
             'slug' => 'contact-list', // 👈 this is what makes sidebar tab active
         ]);
     }
+
+    public function articalDownload($filename)
+    {
+        $filename = trim($filename, '"'); // just in case quotes added
+
+        $path = storage_path('app/uploads/' . $filename);
+
+        if (!file_exists($path)) {
+            abort(404, 'File not found');
+        }
+
+        return response()->download($path);
+    }
+
+    
 }
