@@ -6,9 +6,6 @@
   position: relative;
 }
 
-.pb-100 {
-  padding-bottom: 100px;
-}
 
 
 @media (max-width: 1199.98px) {
@@ -285,6 +282,11 @@ nav.layout-navbar.navbar-active::after {
   }
 }
 
+
+.dark-style .nav~.tab-content {
+  background: inherit;
+}
+
 .landing-footer .footer-link {
   transition: all 0.2s ease-in-out;
 }
@@ -357,10 +359,8 @@ nav.layout-navbar.navbar-active::after {
   color: #FFF;
 }
 
-.dark-style .landing-footer {
-  backdrop-filter: blur(84px);
-background: #FFFFFF0D;
-
+.dark-style .landing-footer .footer-top {
+  background: rgba(255, 255, 255, 0.05);
   /* background-image: url("../../../img/front-pages/backgrounds/footer-bg-dark.png"); */
 }
 

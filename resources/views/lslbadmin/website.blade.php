@@ -225,7 +225,6 @@
                         <input type="text" class="form-control" id="guestPostPrice" name="guestPostPrice" placeholder="Enter price">
                     </div>
 
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

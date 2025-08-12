@@ -25,6 +25,8 @@ class RazorpayPaymentController extends Controller
         $orderId = $request->input('orderId');
 
         $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
+      
+
 
         try {
             $conversionRate = $this->fetchConversionRate($currency, 'INR');

@@ -178,7 +178,7 @@
 
 
 
-                                            <form action="{{ route('advertiser.orders.store') }}" method="post" id="addlinkcartform-{{ $v->id }}" enctype="multipart/form-data" style="display: none !important;">
+                                            {{-- <form action="{{ route('advertiser.orders.store') }}" method="post" id="addlinkcartform-{{ $v->id }}" enctype="multipart/form-data" style="display: none !important;">
                                                 @csrf
                                                 <input type="hidden" id="quantity{{$v->id}}" name="quantity" value="1" />
                                                 <input type="hidden" id="user_id" name="user_id" value="{{ $userDetail->id }}">
@@ -313,7 +313,7 @@
                                                         <button type="button" class="btn btn-danger btn-label-danger" data-web_id="{{ $v->id }}" onclick="removeFromCart($(this))">Remove</button>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </div>
                                     @endforeach

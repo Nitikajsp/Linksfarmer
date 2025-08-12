@@ -123,6 +123,7 @@
         <select id="role-filter" class="form-select">
             <option value="">All</option>
             <option value="New">New</option>
+            <option value="Approved">Approved</option>
             <option value="In-Progress">In-Progress</option>
             <option value="Complete">Complete</option>
             <option value="Rejected">Rejected</option>

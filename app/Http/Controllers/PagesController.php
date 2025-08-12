@@ -102,10 +102,22 @@ class PagesController extends Controller
 
         return view('pages.manualoutreach');
     }
-     public function helpcenter()
+    public function helpcenter()
     {
 
         return view('pages.help');
+    }
+
+    public function helpcenterpublisher()
+    {
+
+        return view('pages.help_publisher');
+    }
+
+     public function helpcenteradvertiser()
+    {
+
+        return view('pages.help_advertiser');
     }
 
     public function writeus()

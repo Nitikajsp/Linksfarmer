@@ -86,6 +86,8 @@ Route::get('/thank-you', function () {
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/faq', [PagesController::class, 'faqpage'])->name('faq');
 Route::get('/help-center', [PagesController::class, 'helpcenter'])->name('help');
+Route::get('/help-center-publisher', [PagesController::class, 'helpcenterpublisher'])->name('help-center.publisher');
+Route::get('/help-center-advertiser', [PagesController::class, 'helpcenteradvertiser'])->name('help-center.advertiser');
 Route::get('/write-us', [PagesController::class, 'writeus'])->name('writeus');
 Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);

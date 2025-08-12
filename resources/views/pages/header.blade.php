@@ -7,11 +7,11 @@
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <meta name="description" content="{{ $content }}" />
+    <meta name="description" content="{{ $content ?? '' }}" />
     <title>{{ $pagetitale }}</title>
 
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/img/faviconnew.svg')}}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/img/faviconnew.svg') }}" />
     <meta name="robots" content="noindex, nofollow">
 
     <meta name="google-site-verification" content="YLCayHYkKvCKvayPOUHJnQ43h6I2p0IEf35uBwX7iQo" />
@@ -23,7 +23,7 @@
         rel="stylesheet" />
 
     <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="{{ asset_url('css/fonts/tabler-icons.eot') }}" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset_url('css/pages/front-page-landing.css') }}" />
     <link rel="stylesheet" href="{{ asset_url('libs/node-waves/node-waves.css') }}" />
     <link rel="canonical" href="{{ url()->current() }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/img/favicon.svg')}}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/img/favicon.svg') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -64,10 +64,54 @@
     </script>
 
     <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Bootstrap Bundle JS (includes Modal + Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Bundle JS (includes Modal + Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- All Page Script -->
+
+
+
+    <!-- Blog Post Script -->
+    @if (Request::is('easy-ways-content-syndication-can-boast-your-research') ||
+            Request::is('manual-outreach-vs-links-farmer'))
+        <script type="application/ld+json">
+    @php
+        $imageUrl = null;
+        
+        if (Request::is('easy-ways-content-syndication-can-boast-your-research')) {
+            $imageUrl = 'img/Easy Ways Content Syndication Can Boast Your Research.jpg';
+        } elseif (Request::is('manual-outreach-vs-links-farmer')) {
+            $imageUrl = 'img/manual-outreach-vs-links-farmer.jpg';
+        }
+        
+        // Check if image file actually exists
+        if ($imageUrl && file_exists(public_path($imageUrl))) {
+            $imageUrl = asset($imageUrl);
+        } else {
+            $imageUrl = null;
+        }
+    @endphp
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+      },
+      "headline": "{{ $pagetitale }}",
+      "description": "{{ $content }}",
+      @if($imageUrl)
+      "image": "{{ $imageUrl }}",
+      @endif
+      "publisher": {
+        "@type": "Organization",
+        "name": "Links Farmer"
+      }
+    }
+    </script>
+    @endif
 </head>
 
 
@@ -98,8 +142,7 @@
                 <ul class="navbar-nav mx-auto">
 
                     <li class="nav-item mega-dropdown">
-                        <a
-                            class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
+                        <a class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
                             aria-expanded="false" data-bs-toggle="mega-dropdown" data-trigger="hover">
                             Service
                         </a>
@@ -149,8 +192,7 @@
                         </div>
                     </li>
                     <li class="nav-item mega-dropdown">
-                        <a
-                            class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
+                        <a class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
                             aria-expanded="false" data-bs-toggle="mega-dropdown" data-trigger="hover">
                             Tools
                         </a>
@@ -233,8 +275,7 @@
                         </div>
                     </li>
                     <li class="nav-item mega-dropdown">
-                        <a
-                            class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
+                        <a class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
                             aria-expanded="false" data-bs-toggle="mega-dropdown" data-trigger="hover">
                             Company
                         </a>
@@ -243,15 +284,13 @@
                                 <div class="col-12 col-lg">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link mega-dropdown-link"
-                                                href="{{ route('about-us') }}">
+                                            <a class="nav-link mega-dropdown-link" href="{{ route('about-us') }}">
                                                 <i class="ti ti-circle me-1"></i>
                                                 About Us </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link mega-dropdown-link"
-                                                href="{{ route('contact-us') }}">
+                                            <a class="nav-link mega-dropdown-link" href="{{ route('contact-us') }}">
                                                 <i class="ti ti-circle me-1"></i>
                                                 Contact Us
                                             </a>
@@ -262,8 +301,7 @@
                         </div>
                     </li>
                     <li class="nav-item mega-dropdown">
-                        <a 
-                            class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
+                        <a class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
                             aria-expanded="false" data-bs-toggle="mega-dropdown" data-trigger="hover">
                             Resources
                         </a>
@@ -275,21 +313,18 @@
                                     <ul class="nav flex-column">
 
                                         <li class="nav-item">
-                                            <a class="nav-link mega-dropdown-link"
-                                                href="{{ route('blog') }}">
+                                            <a class="nav-link mega-dropdown-link" href="{{ route('blog') }}">
                                                 <i class="ti ti-circle me-1"></i>
                                                 Blogs </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link mega-dropdown-link"
-                                                href="{{ route('faq') }}">
+                                            <a class="nav-link mega-dropdown-link" href="{{ route('faq') }}">
                                                 <i class="ti ti-circle me-1"></i>
                                                 FAQs
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link mega-dropdown-link"
-                                                href="{{ route('help') }}">
+                                            <a class="nav-link mega-dropdown-link" href="{{ route('help') }}">
                                                 <i class="ti ti-circle me-1"></i>
                                                 Help Center
                                             </a>
@@ -311,26 +346,25 @@
             <div class="landing-menu-overlay d-xl-none"></div>
             <div class="navbar-nav flex-row gap-2 align-items-center ms-auto d-none d-xl-flex">
                 @if (Auth::check())
+                    <a class="outlined-btn" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <span class="align-middle">{{ __('Log Out') }}</span>
+                    </a>
 
-                <a class="outlined-btn" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <span class="align-middle">{{ __('Log Out') }}</span>
-                </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-
-                <a href="{{ route('dashboard') }}" class="filled-btn">
-                    Dashboard
-                </a>
+                    <a href="{{ route('dashboard') }}" class="filled-btn">
+                        Dashboard
+                    </a>
                 @else
-                <a href="{{ route('login') }}" class="outlined-btn">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="filled-btn">
-                    Sign Up for free
-                </a>
+                    <a href="{{ route('login') }}" class="outlined-btn">
+                        Login
+                    </a>
+                    <a href="{{ route('register') }}" class="filled-btn">
+                        Sign Up for free
+                    </a>
                 @endif
             </div>
 
