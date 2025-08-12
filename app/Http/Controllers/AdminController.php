@@ -15,7 +15,7 @@ use App\Models\Contact;
 
 use Illuminate\Support\Facades\Log;
 use App\Models\lslbTransaction;
-
+use Yajra\DataTables\Facades\DataTables;
 
 class AdminController extends Controller
 {
@@ -75,14 +75,53 @@ class AdminController extends Controller
         return view('lslbadmin.website')->with($data);
     }
 
+    // public function getUsers(Request $request)
+    // {
+    //     $this->chekRole($request);
+    //     $data = array();
+    //     $data['slug'] = 'users-list';
+    //     $data['users'] = lslbUser::where('id', '!=', Auth::user()->id)->get();
+    //     return view('lslbadmin.users')->with($data);
+    // }
     public function getUsers(Request $request)
     {
         $this->chekRole($request);
-        $data = array();
+
+        if ($request->ajax()) {
+            $users = lslbUser::with('role')
+                ->where('lslb_users.id', '!=', Auth::user()->id);
+
+            return DataTables::of($users)
+                ->addIndexColumn()
+                ->editColumn('role', function ($user) {
+                    return $user->role->name ?? '-';
+                })
+                ->editColumn('phone_number', function ($user) {
+                    return $user->dial_code . ' ' . $user->phone_number;
+                })
+                ->editColumn('status', function ($user) {
+                    return $user->status == 1 ? 'Active' : 'Deactive';
+                })
+                ->addColumn('action', function ($user) {
+                    return '
+                <button type="button" class="btn p-0 text-info" onclick="window.location.href=`' . url('/lslb-admin/user/' . $user->id . '/edit') . '`"><i class="ti ti-pencil me-1"></i></button>
+                <button type="button" class="btn p-0 text-danger" data-bs-toggle="modal" data-bs-target="#delete-pop" onclick="$(\'.delete-yes-btn\').attr(\'data-href\',`' . url('/lslb-admin/user/' . $user->id . '/delete') . '`);"><i class="ti ti-trash me-1"></i></button>
+                ';
+                })
+                ->addColumn('verify', function ($user) {
+                    return !empty($user->email_verified_at)
+                        ? '<i class="tf-icons ti ti-clock-check text-info"></i>'
+                        : '<i class="tf-icons ti ti-clock-cog text-danger"></i>';
+                })
+                ->rawColumns(['action', 'verify'])
+                ->make(true);
+        }
+
+        $data = [];
         $data['slug'] = 'users-list';
-        $data['users'] = lslbUser::where('id', '!=', Auth::user()->id)->get();
         return view('lslbadmin.users')->with($data);
     }
+
 
     public function getUserDetail(Request $request, $id)
     {
@@ -507,13 +546,41 @@ class AdminController extends Controller
         ]);
     }
 
-    public function getcontact()
+    // public function getcontact()
+    // {
+    //     $contacts = Contact::latest()->get();
+    //     // return view('lslbadmin.contact', compact('contacts'));
+    //     return view('lslbadmin.contact', [
+    //         'contacts' => $contacts,
+    //         'slug' => 'contact-list', // 👈 this is what makes sidebar tab active
+    //     ]);
+    // }
+
+    public function getcontact(Request $request)
     {
-        $contacts = Contact::latest()->get();
-        // return view('lslbadmin.contact', compact('contacts'));
+        if ($request->ajax()) {
+            $contacts = Contact::latest();
+
+            return DataTables::of($contacts)
+                ->addIndexColumn()
+                ->editColumn('first_name', function ($row) {
+                    return '<span class="truncate-text" title="' . e($row->first_name) . '">'
+                        . e(Str::limit($row->first_name, 20, '...')) . '</span>';
+                })
+                ->editColumn('last_name', function ($row) {
+                    return '<span class="truncate-text" title="' . e($row->last_name) . '">'
+                        . e(Str::limit($row->last_name, 20, '...')) . '</span>';
+                })
+                ->editColumn('email', function ($row) {
+                    return '<span class="truncate-text" title="' . e($row->email) . '">'
+                        . e(Str::limit($row->email, 25, '...')) . '</span>';
+                })
+                ->rawColumns(['first_name', 'last_name', 'email'])
+                ->make(true);
+        }
+
         return view('lslbadmin.contact', [
-            'contacts' => $contacts,
-            'slug' => 'contact-list', // 👈 this is what makes sidebar tab active
+            'slug' => 'contact-list'
         ]);
     }
 
@@ -529,6 +596,4 @@ class AdminController extends Controller
 
         return response()->download($path);
     }
-
-    
 }

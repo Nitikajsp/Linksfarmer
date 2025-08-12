@@ -81,6 +81,21 @@ class WebsiteController extends Controller
     public function store(Request $request)
 
     {
+        $request->validate([
+            'website_url' => [
+                'required',
+                'url',
+                'regex:/^(https?:\/\/)/',
+                'unique:lslb_websites,website_url'
+            ]
+        ], [
+            'website_url.required' => 'Please enter a website URL.',
+            'website_url.url' => 'Please enter a valid URL starting with https:// or http://.',
+            'website_url.regex' => 'Please enter a valid URL starting with https:// or http://.',
+            'website_url.unique' => 'This website URL already exists.',
+        ]);
+
+
         $this->chekRole();
 
         $path = $request->hasFile('site_verification_file')
@@ -139,7 +154,8 @@ class WebsiteController extends Controller
     }
 
 
-    public function show(string $id) {}
+    public function show(string $id) 
+    {}
 
 
     public function edit(string $id)
